@@ -1,12 +1,74 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-    <title> @RENOXADS TG</title>
-    <meta name="theme-color" content="#040812" />
-    <!-- Meta Pixel Code -->
+<meta charset="utf-8" />
+<!-- Final viewport to prevent zoom & ensure fit on iOS/Android -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>@RENOXADS</title>
+<meta name="theme-color" content="#0b0f14" />
+<meta name="description" content="Colour Trading • Live SureShots" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
+
+<style>
+  /* --- Reset & mobile fixes --- */
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{height:100%;min-height:100%;margin:0;padding:0;overflow-x:hidden;background:linear-gradient(120deg,#020317,#041027);-webkit-text-size-adjust:100%;}
+  body{color:#fff;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;display:flex;align-items:center;justify-content:center;padding:18px;}
+
+  .scene{width:100%;max-width:460px;display:flex;align-items:center;justify-content:center;position:relative;min-height:100vh;padding:18px 12px;box-sizing:border-box;overscroll-behavior-y:contain;}
+  .card{width:100%;max-width:440px;border-radius:22px;padding:18px;text-align:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border:1px solid rgba(255,255,255,0.03);box-shadow:0 20px 60px rgba(0,0,0,0.7);position:relative;overflow:hidden;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);}
+
+  .card:before{content:"";position:absolute;inset:-2px;border-radius:24px;background:linear-gradient(90deg, rgba(255,59,122,0.9), rgba(255,184,74,0.9));filter:blur(16px);opacity:0.28;z-index:-2;pointer-events:none;animation:borderShift 8s linear infinite;}
+  @keyframes borderShift{0%{transform:rotate(0)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}
+
+  /* logo */
+  .logo-wrap{width:110px;height:110px;margin:0 auto 8px;position:relative;display:flex;align-items:center;justify-content:center;}
+  .logo{width:100%;height:100%;object-fit:contain;border-radius:50%;display:block;filter:drop-shadow(0 8px 28px rgba(255,40,110,0.22));background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.02), rgba(0,0,0,0.06));padding:10px;}
+  .logo-mask{position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,59,122,0.32), rgba(255,184,74,0.14));mix-blend-mode:screen;filter:blur(8px);pointer-events:none;animation:maskPulse 3.6s ease-in-out infinite;}
+  @keyframes maskPulse{0%{opacity:0.95;transform:scale(1)}50%{opacity:0.6;transform:scale(1.03)}100%{opacity:0.95;transform:scale(1)}}
+  .avatar-halo{position:absolute;inset:-18px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(255,59,122,0.18), rgba(255,184,74,0.06));filter:blur(18px);z-index:-1;animation:halo 4s ease-in-out infinite;}
+  @keyframes halo{0%{opacity:0.9}50%{opacity:0.45}100%{opacity:0.9}}
+
+  h1{margin:6px 0 4px;font-size:30px;line-height:1.02;color:#ff3b7a;font-weight:900;letter-spacing:1px;text-shadow:0 6px 24px rgba(255,60,110,0.14);}
+  .sub{color:#c6bdc6;font-size:13.5px;margin-bottom:10px;}
+
+  .divider{height:4px;width:64px;margin:10px auto;border-radius:10px;background:linear-gradient(90deg,#ff3b7a,#ffb84a);box-shadow:0 8px 28px rgba(255,60,110,0.08);}
+
+  .cta-wrap{margin-top:8px;margin-bottom:6px;display:flex;flex-direction:column;align-items:center;gap:10px;width:100%;}
+  /* Make join very clickable: full-width on mobile, large touch target */
+  .btn-join{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:420px;padding:0 18px;height:64px;border-radius:14px;background:linear-gradient(90deg,#ff3b7a,#ffb84a);color:#fff;font-weight:900;font-size:17px;border:none;cursor:pointer;box-shadow:0 28px 70px rgba(255,60,110,0.18);transition:transform .12s ease,box-shadow .12s ease;-webkit-tap-highlight-color:transparent;touch-action:manipulation;}
+  .btn-join:active{transform:translateY(2px) scale(.998)}
+  .btn-join:before{content:"";position:absolute;left:-40%;top:-12%;width:180%;height:120%;transform:skewX(-20deg);background:linear-gradient(90deg,rgba(255,255,255,0.18),rgba(255,255,255,0.02),rgba(255,255,255,0.12));opacity:0;pointer-events:none;transition:opacity .45s}
+  .btn-join.sweep:before{opacity:0.85;animation:sweep 1s linear}
+  @keyframes sweep{0%{transform:translateX(-140%) skewX(-20deg)}100%{transform:translateX(140%) skewX(-20deg)}}
+
+  .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:10px 0 6px;}
+  .pill{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.03);color:#c6bdc6;font-weight:800;font-size:13px;box-shadow:inset 0 -6px 18px rgba(255,255,255,0.01);}
+
+  .testi{margin-top:6px;font-weight:800;color:#ffdfe8;min-height:26px;text-align:center;padding:0 8px;}
+  .count{margin-top:6px;color:#ffdfe8;font-weight:800;font-size:13px;}
+  .copyright{font-size:12px;color:#b8aeb8;margin-top:12px;opacity:0.95;}
+
+  .footer-fixed{position:fixed;left:12px;right:12px;bottom:12px;display:flex;gap:10px;justify-content:space-between;align-items:center;max-width:480px;margin:auto;z-index:9999;}
+  .agency-btn{flex:1;background:rgba(255,255,255,0.03);border-radius:12px;padding:10px 12px;text-align:center;color:#ffd6a8;text-decoration:none;font-weight:800;border:1px solid rgba(255,255,255,0.04);}
+  .sticky-join{flex:1;margin-left:8px;background:linear-gradient(90deg,#ff3b7a,#ffb84a);border-radius:12px;padding:10px 12px;text-align:center;color:#fff;font-weight:900;box-shadow:0 16px 44px rgba(255,60,110,0.16);touch-action:manipulation;}
+
+  /* ensure no horizontal scroll on small screens */
+  img{max-width:100%;height:auto;display:block}
+  .card, .scene { -webkit-overflow-scrolling:touch; }
+
+  @media (max-width:420px){
+    .card{padding:14px;border-radius:16px;}
+    h1{font-size:24px;}
+    .logo-wrap{width:88px;height:88px;}
+    .btn-join{height:56px;font-size:16px;}
+    .footer-fixed{left:8px;right:8px;bottom:8px;}
+  }
+</style>
+
+ <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -16,484 +78,194 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '714842321171756');
+fbq('init', '1333758864719729');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=714842321171756&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1333758864719729&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-    <style>
-        :root {
-            --bg1: #020613;
-            --bg2: #071226;
-            --glass: rgba(255, 255, 255, 0.04);
-            --muted: #9aa8b4;
-            --accent1: #ffd466;
-            --accent2: #84e6ff;
-            --neon: rgba(132, 224, 255, 0.22);
-        }
-
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden;
-            background: linear-gradient(180deg, var(--bg1), var(--bg2));
-            font-family: Inter, system-ui, Roboto, Arial;
-            color: #fff;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* particles canvas */
-
-        #particles {
-            position: fixed;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        /* center content */
-
-        .center-box {
-            position: fixed;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            width: 100%;
-            max-width: 420px;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
-            pointer-events: auto;
-        }
-
-        /* glass card behind CTA */
-
-        .glass {
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
-            border-radius: 20px;
-            padding: 22px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px) saturate(1.05);
-            border: 1px solid rgba(255, 255, 255, 0.04);
-        }
-
-        .logo {
-            width: 90px;
-            height: 90px;
-            margin: 0 auto 12px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.25));
-            box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.45);
-        }
-
-        .logo img {
-            width: 74px;
-            height: 74px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .title {
-            margin-top: 6px;
-            font-size: 28px;
-            font-weight: 800;
-            color: var(--accent1);
-            letter-spacing: 0.6px;
-        }
-
-        .subtitle {
-            margin-top: 8px;
-            color: var(--muted);
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* CTA */
-
-        .cta-wrap {
-            margin-top: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .cta {
-            width: 86%;
-            max-width: 360px;
-            padding: 18px 22px;
-            border-radius: 999px;
-            border: none;
-            cursor: pointer;
-            font-weight: 900;
-            font-size: 18px;
-            color: #051421;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(90deg, var(--accent1), var(--accent2));
-            box-shadow: 0 26px 70px rgba(0, 0, 0, 0.6), 0 10px 36px rgba(255, 170, 60, 0.12);
-            transition: transform .12s ease, box-shadow .12s ease;
-        }
-
-        .cta:active {
-            transform: translateY(2px);
-        }
-
-        /* neon outline + glass border */
-
-        .cta::before {
-            content: "";
-            position: absolute;
-            inset: -2px;
-            border-radius: 999px;
-            padding: 2px;
-            pointer-events: none;
-            background: linear-gradient(90deg, rgba(255, 200, 70, 0.06), rgba(130, 220, 255, 0.06));
-            filter: blur(8px);
-            z-index: -1;
-        }
-
-        /* shimmer overlay */
-
-        .cta::after {
-            content: "";
-            position: absolute;
-            top: -40%;
-            left: -120%;
-            width: 60%;
-            height: 200%;
-            background: linear-gradient(120deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.0));
-            transform: skewX(-20deg);
-            animation: shine 3.2s linear infinite;
-            opacity: 0.95;
-            mix-blend-mode: overlay;
-        }
-
-        @keyframes shine {
-            0% {
-                left: -120%
-            }
-            70% {
-                left: 160%
-            }
-            100% {
-                left: 160%
-            }
-        }
-
-        /* pulse on load */
-
-        @keyframes pulseOnce {
-            0% {
-                transform: scale(1)
-            }
-            45% {
-                transform: scale(1.06)
-            }
-            100% {
-                transform: scale(1)
-            }
-        }
-
-        .cta.pulse {
-            animation: pulseOnce 850ms cubic-bezier(.2, .9, .2, 1);
-        }
-
-        /* countdown circle/text center */
-
-        .timer-circle {
-            width: 86px;
-            height: 86px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.22));
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
-            font-weight: 800;
-            color: var(--accent2);
-            margin: 6px auto 0;
-            position: relative;
-        }
-
-        .timer-circle small {
-            display: block;
-            font-size: 13px;
-            color: var(--muted);
-            font-weight: 700;
-        }
-
-        /* small progress arc (svg) - optional visual */
-
-        .count-text {
-            font-size: 18px;
-            color: var(--accent1);
-        }
-
-        /* trust badges */
-
-        .trust {
-            margin-top: 8px;
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.02);
-            padding: 8px 10px;
-            border-radius: 10px;
-            font-size: 13px;
-            color: var(--muted);
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .badge svg {
-            width: 18px;
-            height: 18px;
-            opacity: 0.95;
-        }
-
-        .copyright {
-            margin-top: 14px;
-            color: var(--muted);
-            font-size: 13px;
-            text-align: center;
-        }
-
-        /* bottom small ads setup button */
-
-        .ads-setup {
-            position: fixed;
-            bottom: 16px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 12;
-            padding: 10px 14px;
-            background: rgba(6, 10, 14, 0.9);
-            color: var(--accent1);
-            border-radius: 12px;
-            font-weight: 800;
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-            font-size: 13px;
-        }
-
-        /* responsiveness */
-
-        @media (max-width:380px) {
-            .title {
-                font-size: 24px
-            }
-            .cta {
-                font-size: 16px;
-                padding: 16px
-            }
-            .timer-circle {
-                width: 76px;
-                height: 76px
-            }
-        }
-    </style>
 </head>
-
 <body>
-    <canvas id="particles"></canvas>
+  <div class="scene">
+    <main class="card" role="main" aria-labelledby="title">
+      <div class="logo-wrap" aria-hidden="false">
+        <img id="brandLogo" class="logo" src="https://i.ibb.co/kV142B5P/photo-2025-10-23-22-01-53.png" alt="BIGBULL LEGACY logo" />
+        <div class="logo-mask" aria-hidden="true"></div>
+        <div class="avatar-halo" aria-hidden="true"></div>
+      </div>
 
-    <div class="center-box">
-        <div class="glass" role="region" aria-label="Main join card">
-            <div class="logo" aria-hidden="true">
-                <img src="https://i.ibb.co/kV142B5P/photo-2025-10-23-22-01-53.png" alt="Agency logo (EASY ADS)">
-            </div>
+      <h1 id="title">TASHAN ASHISH</h1>
+      <div class="sub">Colour Trading • Live SureShots</div>
+      <div class="divider" aria-hidden="true"></div>
 
+      <div class="cta-wrap" role="region" aria-label="Primary call to action">
+        <button id="joinBtn" class="btn-join" aria-label="Join Telegram Now">Join Telegram Now</button>
 
-            <div class="title">TASHAN ASHISH</div>
-            <div class="subtitle">Daily Live Sureshot — Join Telegram</div>
-
-            <div class="cta-wrap" aria-hidden="false">
-                <button id="joinBtn" class="cta pulse" aria-label="Join Telegram">JOIN TELEGRAM</button>
-
-                <!-- center countdown circle -->
-                <div class="timer-circle" aria-live="polite">
-                    <div>
-                        <div class="count-text" id="countNum">15</div>
-                        <small>sec</small>
-                    </div>
-                </div>
-                <button id="newbtn" class="cta pulse" aria-label="Join Telegram">JOIN TELEGRAM</button>
-                <!-- trust badges -->
-                <div class="trust" aria-hidden="true">
-                    <div class="badge"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L3 6v6c0 5 3.7 9.6 9 10 5.3-.4 9-5 9-10V6l-9-4z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Verified
-                        Sureshots</div>
-                    <div class="badge"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Trusted Channel</div>
-                    <div class="badge"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Daily Updates</div>
-                </div>
-
-            </div>
-
-            <div class="copyright">© 2025 RENOX AGENCY — Ads & Setup: @RENOXADS</div>
+        <div class="pills" aria-hidden="true">
+          <div class="pill">Verified Sureshots</div>
+          <div class="pill">Daily Updates</div>
+          <div class="pill">Trusted Channel</div>
         </div>
-    </div>
 
-    <button id="adsBtn" class="ads-setup" aria-label="Setup Ads">🔧 Setup Ads</button>
+        <div class="testi" id="testimonial">"Small stake, big win. Accurate calls." — Anjali</div>
+        <div class="count">Redirecting in <strong id="seconds">15</strong>s — or tap Join</div>
+      </div>
 
-    <script>
-        /* ========== CONFIG ========== */
-        const JOIN_URL = "https://t.me/+l9sPs_Xep985MTNl"; // plain https
-        const ADS_URL = "https://t.me/+l9sPs_Xep985MTNl";
-    
+      <div class="copyright">© RENOX ADS AGENCY</div>
+    </main>
+  </div>
 
-        const AUTO_SECONDS = 15;
-        /* ============================ */
+  <div class="footer-fixed" aria-hidden="false">
+    <a class="agency-btn" href="https://t.me/+l9sPs_Xep985MTNl" target="_blank" rel="noopener noreferrer">ADS SETUP</a>
+    <button id="stickyJoin" class="sticky-join" aria-label="Join Telegram Now (sticky)">Join Now</button>
+  </div>
 
-        let leadFired = false; // ensure Lead fired only once
-        const joinBtn = document.getElementById('joinBtn');
-        const adsBtn = document.getElementById('adsBtn');
-        const countNum = document.getElementById('countNum');
+<script>
+(function(){
+  'use strict';
+  const TELEGRAM = "https://t.me/+l9sPs_Xep985MTNl";
+  const REDIRECT_SECONDS = 15;
+  const PIXEL_EVENT = "Lead";
 
-        function fireLead(reason) {
-            if (leadFired) return;
-            leadFired = true;
-            try {
-                if (window.fbq) fbq('', '', {
-                    source: reason
-                });
-            } catch (e) {}
-            console.log('Lead fired:', reason);
-        }
+  let seconds = REDIRECT_SECONDS;
+  let leadFired = false;
+  let countdownTimer = null;
 
-        /* Join click -> fire Lead and navigate */
-        joinBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            joinBtn.disabled = true;
-            fireLead('join_click');
-            // small delay to let pixel try sending
-            setTimeout(() => {
-                window.location.href = JOIN_URL;
-            }, 180);
-        });
+  const secEl = document.getElementById('seconds');
+  const joinBtn = document.getElementById('joinBtn');
+  const stickyJoin = document.getElementById('stickyJoin');
+  const testiEl = document.getElementById('testimonial');
+  const brandLogo = document.getElementById('brandLogo');
 
-newbtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            newbtn.disabled = true;
-            fireLead('join_click');
-            // small delay to let pixel try sending
-            setTimeout(() => {
-                window.location.href = JOIN_URL;
-            }, 180);
-        });
+  // Prevent double-tap zoom
+  (function(){
+    let lastTouch = 0;
+    document.addEventListener('touchend', function(e){
+      const now = Date.now();
+      if(now - lastTouch <= 300){
+        e.preventDefault();
+      }
+      lastTouch = now;
+    }, { passive: false });
 
-        /* Ads button - no lead event */
-        adsBtn.addEventListener('click', function() {
-            window.open(ADS_URL, '_blank');
-        });
+    document.addEventListener('gesturestart', function(e){
+      e.preventDefault();
+    }, { passive: false });
+  })();
 
-        /* Auto redirect countdown */
-        let seconds = AUTO_SECONDS;
-        countNum.textContent = seconds;
-        const countdown = setInterval(() => {
-            seconds--;
-            if (seconds <= 0) {
-                clearInterval(countdown);
-                countNum.textContent = 0;
-                fireLead('auto_redirect');
-                // small delay for pixel
-                setTimeout(() => {
-                    window.location.href = JOIN_URL;
-                }, 220);
-            } else {
-                countNum.textContent = seconds;
-            }
-        }, 1000);
+  // Testimonial rotation
+  const msgs = [
+    `"Small stake, big win. Accurate calls." — Anjali`,
+    `"I earned 3x in 20 mins." — Raghav`,
+    `"These calls never miss." — Mohit`
+  ];
+  let ti = 0;
+  const rotateTestimonial = () => {
+    ti = (ti + 1) % msgs.length;
+    if(!testiEl) return;
+    testiEl.style.transition = 'opacity .22s';
+    testiEl.style.opacity = 0;
+    setTimeout(()=>{
+      testiEl.textContent = msgs[ti];
+      testiEl.style.opacity = 1;
+    }, 220);
+  };
+  const testimonialInterval = setInterval(rotateTestimonial, 2800);
 
-        /* remove initial pulse after first animation */
-        setTimeout(() => joinBtn.classList.remove('pulse'), 1200);
+  // CTA sweep effect
+  function doSweep(el){
+    if(!el) return;
+    el.classList.remove('sweep');
+    void el.offsetWidth;
+    el.classList.add('sweep');
+  }
+  setTimeout(()=> doSweep(joinBtn), 700);
+  const sweepInterval = setInterval(()=> doSweep(joinBtn), 3200);
 
-        /* ========== Particle background (lightweight) ========== */
-        (function() {
-            const canvas = document.getElementById('particles'),
-                ctx = canvas.getContext('2d');
-            let w = canvas.width = innerWidth,
-                h = canvas.height = innerHeight;
-            const particles = [];
-            const PCOUNT = Math.max(40, Math.floor((w * h) / 60000)); // adaptive density
-            function rand(min, max) {
-                return Math.random() * (max - min) + min;
-            }
+  // Safe fire lead
+  function fireLead(source){
+    if(leadFired) return;
+    leadFired = true;
+    try{
+      if(typeof fbq === 'function'){
+        fbq('track', PIXEL_EVENT, {source: source});
+      } else if(window.fbq && typeof window.fbq === 'function'){
+        window.fbq('track', PIXEL_EVENT, {source: source});
+      } else {
+        // fallback: send a beacon to logging endpoint (if desired)
+        // navigator.sendBeacon('/lead-log', JSON.stringify({source:source, t:Date.now()}));
+        console.warn('fbq not available to send Lead event.');
+      }
+    }catch(err){ console.warn('fireLead error', err); }
+  }
 
-            class P {
-                constructor() {
-                    this.reset();
-                }
-                reset() {
-                    this.x = rand(0, w);
-                    this.y = rand(0, h);
-                    this.vx = rand(-0.2, 0.6);
-                    this.vy = rand(-0.05, 0.3);
-                    this.r = rand(0.8, 2.6);
-                    this.alpha = rand(0.06, 0.22);
-                }
-                step() {
-                    this.x += this.vx;
-                    this.y += this.vy;
-                    if (this.x > w + 30 || this.y > h + 30 || this.x < -30) this.reset();
-                }
-                draw() {
-                    ctx.beginPath();
-                    ctx.fillStyle = "rgba(143,224,255," + this.alpha + ")";
-                    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-                    ctx.fill();
-                }
-            }
+  function triggerLeadAndRedirect(source){
+    fireLead(source || 'auto-redirect');
+    if(countdownTimer) clearInterval(countdownTimer);
+    setTimeout(()=> { window.location.href = TELEGRAM; }, 350);
+  }
 
-            for (let i = 0; i < PCOUNT; i++) particles.push(new P());
+  // click handlers
+  [joinBtn, stickyJoin].forEach(btn=>{
+    if(!btn) return;
+    btn.addEventListener('click', (e)=>{
+      e.preventDefault();
+      triggerLeadAndRedirect('join-click');
+    });
+    btn.addEventListener('keyup', (e)=> { if(e.key === 'Enter') btn.click(); });
+  });
 
-            function loop() {
-                ctx.clearRect(0, 0, w, h);
-                // subtle radial ambient
-                const g = ctx.createRadialGradient(w / 2, h / 2, 0, w / 2, h / 2, Math.max(w, h));
-                g.addColorStop(0, 'rgba(8,20,30,0.06)');
-                g.addColorStop(1, 'rgba(2,6,10,0.2)');
-                ctx.fillStyle = g;
-                ctx.fillRect(0, 0, w, h);
+  // logo micro interaction
+  if(brandLogo){
+    brandLogo.addEventListener('touchstart', ()=> brandLogo.style.transform = 'scale(1.02)');
+    brandLogo.addEventListener('touchend', ()=> brandLogo.style.transform = '');
+    brandLogo.addEventListener('mouseenter', ()=> brandLogo.style.transform = 'scale(1.04)');
+    brandLogo.addEventListener('mouseleave', ()=> brandLogo.style.transform = '');
+  }
 
-                // draw small particles
-                for (let p of particles) {
-                    p.step();
-                    p.draw();
-                }
-                requestAnimationFrame(loop);
-            }
+  // Countdown start
+  function startCountdown(){
+    if(!secEl) return;
+    secEl.textContent = seconds;
+    countdownTimer = setInterval(()=>{
+      seconds--;
+      if(seconds <= 0){
+        clearInterval(countdownTimer);
+        triggerLeadAndRedirect('auto-redirect');
+      } else {
+        secEl.textContent = seconds;
+      }
+    }, 1000);
+  }
 
-            loop();
-            window.addEventListener('resize', () => {
-                w = canvas.width = innerWidth;
-                h = canvas.height = innerHeight;
-                // optionally add/remove particles for density
-            });
-        })();
-        /* ============================ */
-    </script>
-</noscript>
+  if(document.readyState === 'complete' || document.readyState === 'interactive'){
+    startCountdown();
+  } else {
+    document.addEventListener('DOMContentLoaded', startCountdown, {once:true});
+  }
+
+  // Cleanup
+  function cleanup(){
+    clearInterval(testimonialInterval);
+    clearInterval(sweepInterval);
+    if(countdownTimer) clearInterval(countdownTimer);
+  }
+  window.addEventListener('pagehide', cleanup);
+  window.addEventListener('beforeunload', cleanup);
+
+  // Respect reduced motion
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.logo-mask, .avatar-halo, .card:before').forEach(el=> { if(el) el.style.animation = 'none'; });
+    clearInterval(testimonialInterval);
+    clearInterval(sweepInterval);
+  }
+})();
+</script>
+
 </body>
-
 </html>
+
 
 
