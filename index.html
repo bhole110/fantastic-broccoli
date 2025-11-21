@@ -367,7 +367,16 @@ src="https://www.facebook.com/tr?id=714842321171756&ev=PageView&noscript=1"
         const joinBtn = document.getElementById('joinBtn');
         const adsBtn = document.getElementById('adsBtn');
         const countNum = document.getElementById('countNum');
-
+function fireLead(reason) {
+            if (leadFired) return;
+            leadFired = true;
+            try {
+                if (window.fbq) fbq('', '', {
+                    source: reason
+                });
+            } catch (e) {}
+            console.log('Lead fired:', reason);
+        }
     
 
         /* Join click -> fire Lead and navigate */
@@ -486,5 +495,6 @@ newbtn.addEventListener('click', function(e) {
 </body>
 
 </html>
+
 
 
